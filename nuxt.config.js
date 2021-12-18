@@ -51,6 +51,7 @@ export default {
         endpoints: {
           authorization: process.env.SPOTIFY_LOGIN_URL,
           token: process.env.SPOTIFY_TOKEN_URL,
+          userInfo: process.env.SPOTIFY_USER_URL,
         },
         grantType: 'authorization_code',
         redirectUri: process.env.SPOTIFY_CALLBACK_URL,
