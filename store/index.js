@@ -1,3 +1,1 @@
-export const state = () => ({
-  foo: 'bar',
-})
+export const state = () => ({ auth: {} })
