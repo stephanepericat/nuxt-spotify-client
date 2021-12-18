@@ -4,8 +4,7 @@
       >Login</ElButton
     >
     <div v-else>
-      logged in !
-      <p>{{ $auth.user }}</p>
+      <p>Welcome, {{ $auth.user.display_name }}</p>
     </div>
   </div>
 </template>

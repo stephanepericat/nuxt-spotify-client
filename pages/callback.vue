@@ -1,5 +1,5 @@
 <template>
-  <div>logging in...</div>
+  <div>Redirecting...</div>
 </template>
 <script>
 export default {
