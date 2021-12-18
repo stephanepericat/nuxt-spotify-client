@@ -20,6 +20,10 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: ['@/plugins/element-ui'],
 
+  publicRuntimeConfig: {
+    loginUrl: 'https://spotify.com',
+  },
+
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
@@ -35,7 +39,17 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/auth-next',
   ],
+
+  auth: {
+    plugins: ['~/plugins/auth.js'],
+    strategies: {
+      spotify: {
+        scheme: '~/schemes/spotifyScheme.js',
+      },
+    },
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
@@ -46,5 +60,9 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     transpile: [/^element-ui/],
+  },
+
+  router: {
+    middleware: ['auth'],
   },
 }
