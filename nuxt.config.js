@@ -20,12 +20,6 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: ['@/plugins/element-ui'],
 
-  publicRuntimeConfig: {
-    callbackUrl: process.env.SPOTIFY_CALLBACK_URL,
-    clientId: process.env.SPOTIFY_CLIENT_ID,
-    loginUrl: process.env.SPOTIFY_LOGIN_URL,
-  },
-
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
