@@ -21,7 +21,9 @@ export default {
   plugins: ['@/plugins/element-ui'],
 
   publicRuntimeConfig: {
-    loginUrl: 'https://spotify.com',
+    callbackUrl: process.env.SPOTIFY_CALLBACK_URL,
+    clientId: process.env.SPOTIFY_CLIENT_ID,
+    loginUrl: process.env.SPOTIFY_LOGIN_URL,
   },
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -43,10 +45,18 @@ export default {
   ],
 
   auth: {
-    plugins: ['~/plugins/auth.js'],
     strategies: {
       spotify: {
-        scheme: '~/schemes/spotifyScheme.js',
+        scheme: 'oauth2',
+        endpoints: {
+          authorization: process.env.SPOTIFY_LOGIN_URL,
+          token: process.env.SPOTIFY_TOKEN_URL,
+        },
+        grantType: 'authorization_code',
+        redirectUri: process.env.SPOTIFY_CALLBACK_URL,
+        clientId: process.env.SPOTIFY_CLIENT_ID,
+        responseType: 'code',
+        codeChallengeMethod: 'S256',
       },
     },
   },
