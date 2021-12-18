@@ -1,5 +1,7 @@
 <template>
-  <Tutorial />
+  <div>
+    <ElButton>spotify</ElButton>
+  </div>
 </template>
 
 <script>
