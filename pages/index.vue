@@ -7,19 +7,24 @@
 </template>
 
 <script>
-export default {
+import { defineComponent, useContext, useRouter } from '@nuxtjs/composition-api'
+
+export default defineComponent({
   name: 'IndexPage',
 
   layout: 'login',
 
   auth: false,
 
-  asyncData({ $auth, redirect }) {
+  setup() {
+    const { $auth } = useContext()
+    const router = useRouter()
+
     if ($auth.loggedIn) {
-      redirect({ path: '/home' })
+      router.push({ path: '/home' })
     }
   },
-}
+})
 </script>
 <style lang="scss" scoped>
 @import '~/assets/style/mixins';
