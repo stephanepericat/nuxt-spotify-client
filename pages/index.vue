@@ -8,7 +8,7 @@
 
 <script>
 import { computed, defineComponent, useContext } from '@nuxtjs/composition-api'
-import useRedirect from '~/composables/useRedirect'
+import useRedirect from '~/composables/utils/useRedirect'
 
 export default defineComponent({
   name: 'IndexPage',

@@ -13,8 +13,8 @@
   </div>
 </template>
 <script>
-import { computed, defineComponent, useContext } from '@nuxtjs/composition-api'
-import useLogin from '~/composables/useLogin'
+import { defineComponent } from '@nuxtjs/composition-api'
+import useLogin from '~/composables/utils/useLogin'
 
 export default defineComponent({
   name: 'LoginPage',
@@ -22,12 +22,8 @@ export default defineComponent({
   layout: 'login',
 
   setup() {
-    const { i18n } = useContext()
-    const genericError = computed(() => i18n.t('genericError'))
-    const redirecting = computed(() => i18n.t('redirecting'))
-    const loggingIn = computed(() => i18n.t('loggingIn'))
-
-    const { loggedIn, code, error } = useLogin()
+    const { code, error, genericError, loggedIn, loggingIn, redirecting } =
+      useLogin()
 
     return { loggedIn, loggingIn, code, error, genericError, redirecting }
   },
