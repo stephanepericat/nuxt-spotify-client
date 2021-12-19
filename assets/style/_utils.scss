@@ -1,0 +1,29 @@
+.large-icon {
+  font-size: 32px;
+}
+
+.text {
+  &-supplementary {
+    font-size: 12px;
+  }
+
+  &-body {
+    font-size: 14px;
+
+    &-small {
+      font-size: 13px;
+    }
+  }
+
+  &-title {
+    font-size: 18px;
+
+    &-main {
+      font-size: 20px;
+    }
+
+    &-small {
+      font-size: 16px;
+    }
+  }
+}
