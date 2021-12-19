@@ -20,6 +20,8 @@
 export default {
   name: 'LoginPage',
 
+  layout: 'login',
+
   created() {
     if (!this.$auth.loggedIn && !this.$route.query.code) {
       this.$auth.loginWith('spotify')

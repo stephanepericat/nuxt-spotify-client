@@ -1,14 +1,8 @@
 <template>
   <div class="main-view">
-    <ElButton v-if="!$auth.loggedIn" @click="$auth.loginWith('spotify')">
+    <ElButton @click="$auth.loginWith('spotify')">
       {{ $t('login') }}
     </ElButton>
-    <template v-else>
-      <h3
-        class="text-title-small"
-        v-text="$t('greetings', { username: $auth.user.display_name })"
-      />
-    </template>
   </div>
 </template>
 
@@ -16,7 +10,15 @@
 export default {
   name: 'IndexPage',
 
+  layout: 'login',
+
   auth: false,
+
+  asyncData({ $auth, redirect }) {
+    if ($auth.loggedIn) {
+      redirect({ path: '/home' })
+    }
+  },
 }
 </script>
 <style lang="scss" scoped>

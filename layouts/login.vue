@@ -1,12 +1,11 @@
 <template>
   <el-container class="spotify-client">
-    <el-aside>aside</el-aside>
-    <el-main>main</el-main>
+    <NuxtChild />
   </el-container>
 </template>
 <script>
 export default {
-  name: 'DefaultLayout',
+  name: 'LoginLayout',
 }
 </script>
 <style lang="scss" scoped>
