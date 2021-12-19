@@ -1,15 +1,30 @@
 <template>
   <el-container class="spotify-client default-layout">
-    <el-aside>Navbar</el-aside>
+    <el-aside>
+      <ul>
+        <li v-for="playlist in playlists" :key="playlist.id">
+          {{ playlist.name }}
+        </li>
+      </ul>
+    </el-aside>
     <el-main>
       <nuxt-child />
     </el-main>
   </el-container>
 </template>
 <script>
-import { defineComponent } from '@nuxtjs/composition-api'
+import { defineComponent, useAsync } from '@nuxtjs/composition-api'
+import usePlaylists from '~/composables/services/usePlaylists'
 
 export default defineComponent({
   name: 'DefaultLayout',
+
+  setup() {
+    const { getUserPlaylists } = usePlaylists()
+
+    const playlists = useAsync(() => getUserPlaylists())
+
+    return { playlists }
+  },
 })
 </script>
