@@ -1,6 +1,7 @@
 <template>
   <div class="home-view">
     <h3 class="text-title-small" v-text="greetings" />
+    <p>Content goes here</p>
   </div>
 </template>
 <script>

@@ -5,7 +5,7 @@ import useService from '~/composables/utils/useService'
 export default () => {
   const { checkAuth, get } = useService()
 
-  const getUserPlaylists = async (limit = 25, offset = 0) => {
+  const getUserPlaylists = async (limit = 50, offset = 0) => {
     checkAuth()
 
     try {

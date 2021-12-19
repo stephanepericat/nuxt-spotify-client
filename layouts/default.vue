@@ -7,9 +7,13 @@
         </li>
       </ul>
     </el-aside>
-    <el-main>
-      <nuxt-child />
-    </el-main>
+    <el-container>
+      <el-header>header</el-header>
+      <el-main>
+        <nuxt-child />
+      </el-main>
+      <el-footer>footer</el-footer>
+    </el-container>
   </el-container>
 </template>
 <script>
