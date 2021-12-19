@@ -1,7 +1,9 @@
 <template>
   <el-container class="spotify-client">
-    <el-aside>aside</el-aside>
-    <el-main>main</el-main>
+    <el-aside>Navbar</el-aside>
+    <el-main>
+      <nuxt-child />
+    </el-main>
   </el-container>
 </template>
 <script>
@@ -9,8 +11,3 @@ export default {
   name: 'DefaultLayout',
 }
 </script>
-<style lang="scss" scoped>
-.spotify-client {
-  height: 100vh;
-}
-</style>

@@ -1,13 +1,13 @@
 <template>
   <div class="main-view">
-    <ElButton @click="$auth.loginWith('spotify')">
-      {{ $t('login') }}
-    </ElButton>
+    <el-button @click="$auth.loginWith('spotify')">
+      {{ buttonLabel }}
+    </el-button>
   </div>
 </template>
 
 <script>
-import { defineComponent } from '@nuxtjs/composition-api'
+import { computed, defineComponent, useContext } from '@nuxtjs/composition-api'
 import useRedirect from '~/composables/useRedirect'
 
 export default defineComponent({
@@ -18,7 +18,14 @@ export default defineComponent({
   auth: false,
 
   setup() {
-    useRedirect()
+    const { i18n } = useContext()
+    const buttonLabel = computed(() => i18n.t('login'))
+    const { loggedIn } = useRedirect()
+
+    return {
+      buttonLabel,
+      loggedIn,
+    }
   },
 })
 </script>

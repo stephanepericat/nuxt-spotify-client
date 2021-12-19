@@ -4,15 +4,21 @@
   </div>
 </template>
 <script>
-import { defineComponent, computed, useContext } from '@nuxtjs/composition-api'
+import {
+  computed,
+  defineComponent,
+  ref,
+  useContext,
+} from '@nuxtjs/composition-api'
 
 export default defineComponent({
   name: 'HomeView',
 
   setup() {
-    const { $auth, $t } = useContext()
+    const { $auth, i18n } = useContext()
+    const username = ref($auth.user.display_name)
     const greetings = computed(() =>
-      $t('greetings', { username: $auth.user.display_name })
+      i18n.t('greetings', { username: username.value })
     )
 
     return {

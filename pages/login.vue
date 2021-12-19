@@ -1,19 +1,19 @@
 <template>
   <div class="login-view">
-    <h3 v-if="error" class="text-title-small" v-text="$t('genericError')" />
+    <h3 v-if="error" class="text-title-small" v-text="genericError" />
     <template v-else>
       <h3
         v-if="!loggedIn && !code"
         class="text-title-small"
-        v-text="$t('redirecting')"
+        v-text="redirecting"
       />
-      <h3 v-else class="text-title-small" v-text="$t('loggingIn')" />
+      <h3 v-else class="text-title-small" v-text="loggingIn" />
       <i class="el-icon-loading large-icon" />
     </template>
   </div>
 </template>
 <script>
-import { defineComponent } from '@nuxtjs/composition-api'
+import { computed, defineComponent, useContext } from '@nuxtjs/composition-api'
 import useLogin from '~/composables/useLogin'
 
 export default defineComponent({
@@ -22,9 +22,14 @@ export default defineComponent({
   layout: 'login',
 
   setup() {
+    const { i18n } = useContext()
+    const genericError = computed(() => i18n.t('genericError'))
+    const redirecting = computed(() => i18n.t('redirecting'))
+    const loggingIn = computed(() => i18n.t('loggingIn'))
+
     const { loggedIn, code, error } = useLogin()
 
-    return { loggedIn, code, error }
+    return { loggedIn, loggingIn, code, error, genericError, redirecting }
   },
 })
 </script>
