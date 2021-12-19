@@ -1,18 +1,18 @@
 <template>
   <el-container class="spotify-client default-layout">
-    <el-aside class="spotify-client__sidebar">
+    <el-aside class="default-layout__sidebar">
       <ul>
         <li v-for="playlist in playlists" :key="playlist.id">
           {{ playlist.name }}
         </li>
       </ul>
     </el-aside>
-    <el-container class="spotify-client__main">
-      <el-header class="spotify-client__header">header</el-header>
-      <el-main class="spotify-client__contents">
+    <el-container class="default-layout__main">
+      <el-header class="default-layout__header">header</el-header>
+      <el-main class="default-layout__contents">
         <nuxt-child />
       </el-main>
-      <el-footer class="spotify-client__footer" height="100px">
+      <el-footer class="default-layout__footer" height="100px">
         <AudioPlayer />
       </el-footer>
     </el-container>
@@ -34,3 +34,12 @@ export default defineComponent({
   },
 })
 </script>
+<style lang="scss" scoped>
+@import '~/assets/style/variables';
+
+.default-layout {
+  &__footer {
+    border-top: 1px solid $color-highlight;
+  }
+}
+</style>
