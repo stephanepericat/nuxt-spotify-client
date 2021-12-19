@@ -40,6 +40,7 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     '@nuxtjs/auth-next',
+    '@nuxtjs/i18n',
   ],
 
   auth: {
@@ -69,6 +70,24 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     transpile: [/^element-ui/],
+  },
+
+  i18n: {
+    locales: [
+      {
+        code: 'en',
+        iso: 'en-US',
+        file: 'en.js',
+        dir: 'ltr',
+        isCatchallLocale: true,
+      },
+    ],
+    defaultLocale: 'en',
+    langDir: './locales',
+    lazy: true,
+    vuei18n: {
+      fallbackLocale: 'en',
+    },
   },
 
   router: {

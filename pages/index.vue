@@ -1,10 +1,13 @@
 <template>
   <div class="main-view">
     <ElButton v-if="!$auth.loggedIn" @click="$auth.loginWith('spotify')">
-      Login
+      {{ $t('login') }}
     </ElButton>
     <template v-else>
-      <h3 class="text-title-small">Welcome, {{ $auth.user.display_name }}!</h3>
+      <h3
+        class="text-title-small"
+        v-text="$t('greetings', { username: $auth.user.display_name })"
+      />
     </template>
   </div>
 </template>

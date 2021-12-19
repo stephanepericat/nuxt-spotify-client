@@ -1,14 +1,14 @@
 <template>
   <div class="callback-view">
-    <h3 class="text-title-small">Redirecting to dashboard...</h3>
-    <i class="el-icon-loading large-icon"></i>
+    <h3 class="text-title-small" v-text="$t('redirectingToDashboard')" />
+    <i class="el-icon-loading large-icon" />
   </div>
 </template>
 <script>
 export default {
   name: 'CallbackPage',
 
-  mounted() {
+  created() {
     if (this.$auth.loggedIn) {
       this.$router.push({ path: '/' })
     }
