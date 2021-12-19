@@ -10,7 +10,6 @@ export default {
 </script>
 <style lang="scss" scoped>
 .spotify-client {
-  // background-color: #111;
   height: 100vh;
 }
 </style>

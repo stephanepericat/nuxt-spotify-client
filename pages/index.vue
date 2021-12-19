@@ -20,8 +20,9 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+@import '~/assets/style/mixins';
+
 .main-view {
-  width: 100%;
-  text-align: center;
+  @include centeredPage();
 }
 </style>

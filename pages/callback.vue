@@ -16,8 +16,9 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+@import '~/assets/style/mixins';
+
 .callback-view {
-  width: 100%;
-  text-align: center;
+  @include centeredPage();
 }
 </style>
