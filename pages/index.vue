@@ -7,7 +7,8 @@
 </template>
 
 <script>
-import { defineComponent, useContext, useRouter } from '@nuxtjs/composition-api'
+import { defineComponent } from '@nuxtjs/composition-api'
+import useRedirect from '~/composables/useRedirect'
 
 export default defineComponent({
   name: 'IndexPage',
@@ -17,12 +18,7 @@ export default defineComponent({
   auth: false,
 
   setup() {
-    const { $auth } = useContext()
-    const router = useRouter()
-
-    if ($auth.loggedIn) {
-      router.push({ path: '/home' })
-    }
+    useRedirect()
   },
 })
 </script>

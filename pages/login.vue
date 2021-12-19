@@ -1,13 +1,9 @@
 <template>
   <div class="login-view">
-    <h3
-      v-if="$route.query.error"
-      class="text-title-small"
-      v-text="$t('genericError')"
-    />
+    <h3 v-if="error" class="text-title-small" v-text="$t('genericError')" />
     <template v-else>
       <h3
-        v-if="!$auth.loggedIn && !$route.query.code"
+        v-if="!loggedIn && !code"
         class="text-title-small"
         v-text="$t('redirecting')"
       />
@@ -17,21 +13,20 @@
   </div>
 </template>
 <script>
-export default {
+import { defineComponent } from '@nuxtjs/composition-api'
+import useLogin from '~/composables/useLogin'
+
+export default defineComponent({
   name: 'LoginPage',
 
   layout: 'login',
 
-  created() {
-    if (!this.$auth.loggedIn && !this.$route.query.code) {
-      this.$auth.loginWith('spotify')
-    }
+  setup() {
+    const { loggedIn, code, error } = useLogin()
 
-    if (this.$route.query.error) {
-      this.$router.push({ path: '/' })
-    }
+    return { loggedIn, code, error }
   },
-}
+})
 </script>
 <style lang="scss" scoped>
 @import '~/assets/style/mixins';

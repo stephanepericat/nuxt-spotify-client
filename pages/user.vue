@@ -4,9 +4,11 @@
   </div>
 </template>
 <script>
-export default {
+import { defineComponent } from '@nuxtjs/composition-api'
+
+export default defineComponent({
   name: 'UserPage',
-}
+})
 </script>
 <style lang="scss" scoped>
 .user-view {
