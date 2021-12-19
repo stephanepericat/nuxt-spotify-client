@@ -8,7 +8,13 @@ export default () => {
   const { loggedIn, user } = $auth
   const headers = reactive({ Authorization: token.value })
 
+  const checkAuth = () => {
+    if (!loggedIn) {
+      throw new Error('Unauthorized')
+    }
+  }
+
   const get = (url, params = {}) => $axios.get(url, { headers, params })
 
-  return { get, loggedIn, user }
+  return { checkAuth, get, user }
 }
