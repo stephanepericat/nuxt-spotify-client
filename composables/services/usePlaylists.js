@@ -1,5 +1,3 @@
-import consola from 'consola'
-
 import useService from '~/composables/utils/useService'
 
 export default () => {
@@ -13,7 +11,7 @@ export default () => {
       const { items = [] } = data
       return items
     } catch (e) {
-      consola.error(e)
+      throw new Error(e)
     }
   }
 

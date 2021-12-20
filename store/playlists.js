@@ -1,5 +1,5 @@
 import consola from 'consola'
-import { useContext } from '@nuxtjs/composition-api'
+import usePlaylists from '~/composables/services/usePlaylists'
 
 export const state = () => ({
   items: null,
@@ -16,16 +16,14 @@ export const mutations = {
 }
 
 export const actions = {
-  getUserPlaylists: async ({ commit }, data) => {
-    const { $axios } = useContext()
+  getUserPlaylists: async ({ commit }, data = {}) => {
+    const { getUserPlaylists } = usePlaylists()
+    const { limit = 50, offset = 0 } = data
 
     consola.info('Retrieving user playlists...', data)
 
     try {
-      const params = { limit: 50 }
-      const { data } = await $axios.get('/me/playlists', { params })
-      const { items = [] } = data
-
+      const items = await getUserPlaylists(limit, offset)
       commit('setItems', items)
     } catch (e) {
       consola.error('Error retrieving user playlists...', e)
