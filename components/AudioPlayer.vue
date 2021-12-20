@@ -2,7 +2,22 @@
   <el-row class="audio-player">
     <div class="audio-player__current">
       <div class="audio-player__info">
-        <div class="audio-player__info--thumbnail"></div>
+        <div class="audio-player__info--thumbnail">
+          <img class="audio-player__info--thumbnail-img" :src="artworkUrl" />
+        </div>
+        <div class="audio-player__info--details">
+          <p
+            class="audio-player__info--details-track text-title-small"
+            v-text="trackLabel"
+          />
+          <p
+            class="audio-player__info--details-artist text-supplementary"
+            v-text="artistLabel"
+          />
+        </div>
+        <div class="audio-player__info--like">
+          <i class="el-icon-star-off audio-player__info--like-btn"></i>
+        </div>
       </div>
     </div>
     <div class="audio-player__controls">
@@ -55,9 +70,12 @@ export default defineComponent({
   name: 'AudioPlayer',
 
   props: {
+    artistLabel: { type: String, default: '' },
+    artworkUrl: { type: String, default: '' },
     isLoopEnabled: Boolean,
     isPlaying: Boolean,
     isRandomEnabled: Boolean,
+    trackLabel: { type: String, default: '' },
   },
 
   emits: ['toggle-loop-state', 'toggle-play-state', 'toggle-random-state'],
@@ -95,6 +113,7 @@ export default defineComponent({
 </script>
 <style lang="scss" scoped>
 @import '~/assets/style/mixins';
+@import '~/assets/style/variables';
 
 .audio-player {
   @include centeredPage();
@@ -111,6 +130,57 @@ export default defineComponent({
     flex-basis: 350px;
     height: 75px;
     // background: #f70;
+  }
+
+  &__info {
+    margin-right: 10px;
+    display: flex;
+    height: 100%;
+
+    &--details {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+
+      &-track {
+        margin-bottom: 8px;
+      }
+
+      &-track,
+      &-artist {
+        min-width: 20px;
+        max-width: 175px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+
+    &--like {
+      flex-basis: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+
+      &-btn {
+        font-size: 24px;
+      }
+    }
+
+    &--thumbnail {
+      flex-basis: 75px;
+      flex-shrink: 0;
+      border: 1px solid $color-highlight;
+      margin-right: 12px;
+
+      &-img {
+        height: 100%;
+        width: 100%;
+        // background: #ccc;
+      }
+    }
   }
 
   &__controls {

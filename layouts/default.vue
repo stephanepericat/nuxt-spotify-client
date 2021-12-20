@@ -14,9 +14,12 @@
       </el-main>
       <el-footer class="default-layout__footer" height="100px">
         <AudioPlayer
+          artist-label="Alluvial"
+          artwork-url="https://www.grande-rock.com/sites/default/files/styles/large1/public/imagesnews/Alluvial-Sarcoma-cover2021.jpg?itok=H0gb03iT"
           :is-loop-enabled="isLoopEnabled"
           :is-playing="isPlaying"
           :is-random-enabled="isRandomEnabled"
+          track-label="Ulysses"
           @toggle-loop-state="onToggleLoopState"
           @toggle-play-state="onTogglePlayState"
           @toggle-random-state="onToggleRandomState"
