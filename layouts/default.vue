@@ -19,16 +19,20 @@
   </el-container>
 </template>
 <script>
-import { defineComponent, useAsync } from '@nuxtjs/composition-api'
-import usePlaylists from '~/composables/services/usePlaylists'
+// import consola from 'consola'
+import { computed, defineComponent, useStore } from '@nuxtjs/composition-api'
 
 export default defineComponent({
   name: 'DefaultLayout',
 
   setup() {
-    const { getUserPlaylists } = usePlaylists()
+    const $store = useStore()
+    const playlists = computed(() => $store.state.playlists.items)
 
-    const playlists = useAsync(() => getUserPlaylists())
+    // cache playlists if not yet available..
+    if (!playlists.value) {
+      $store.dispatch('playlists/getUserPlaylists', { limit: 50, offset: 0 })
+    }
 
     return { playlists }
   },

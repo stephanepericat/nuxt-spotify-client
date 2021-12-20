@@ -1,6 +1,7 @@
 <template>
   <div class="user-view">
     <h1 class="text-title-main" v-text="username" />
+    <nuxt-link :to="{ path: '/home' }">Go Home</nuxt-link>
   </div>
 </template>
 <script>

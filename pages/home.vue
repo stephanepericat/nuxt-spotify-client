@@ -2,6 +2,7 @@
   <div class="home-view">
     <h3 class="text-title-small" v-text="greetings" />
     <p>Content goes here</p>
+    <nuxt-link :to="{ path: '/user' }">user page</nuxt-link>
   </div>
 </template>
 <script>

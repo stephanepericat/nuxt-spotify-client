@@ -1,6 +1,10 @@
 <template>
   <el-row class="audio-player">
-    <div class="audio-player__current">info</div>
+    <div class="audio-player__current">
+      <div class="audio-player__info">
+        <div class="audio-player__info--thumbnail"></div>
+      </div>
+    </div>
     <div class="audio-player__controls">
       <div class="audio-player__controls--bar">
         <el-button
@@ -76,8 +80,8 @@ export default defineComponent({
   }
 
   &__current {
-    flex-basis: 300px;
-    height: 60px;
+    flex-basis: 350px;
+    height: 75px;
     // background: #f70;
   }
 
@@ -85,7 +89,7 @@ export default defineComponent({
     flex-grow: 1;
     flex-shrink: 0;
     text-align: center;
-    height: 80px;
+    height: 75px;
     // background: yellow;
 
     &--progress {
@@ -94,8 +98,8 @@ export default defineComponent({
   }
 
   &__devices {
-    flex-basis: 300px;
-    height: 30px;
+    flex-basis: 250px;
+    height: 25px;
     // background: #f70;
   }
 }
