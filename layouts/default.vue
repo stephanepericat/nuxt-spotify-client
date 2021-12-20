@@ -19,7 +19,9 @@
           :is-loop-enabled="isLoopEnabled"
           :is-playing="isPlaying"
           :is-random-enabled="isRandomEnabled"
+          track-id="vlcT8RVn1uWMsYpq2e5K"
           track-label="Ulysses"
+          @like-track="onLikeTrackClick"
           @toggle-loop-state="onToggleLoopState"
           @toggle-play-state="onTogglePlayState"
           @toggle-random-state="onToggleRandomState"
@@ -43,6 +45,8 @@ export default defineComponent({
     const isPlaying = computed(() => $store.state.audio.isPlaying)
     const isRandomEnabled = computed(() => $store.state.audio.isRandomEnabled)
 
+    const onLikeTrackClick = (trackId) => console.log('like track', trackId)
+
     const onToggleLoopState = () => $store.dispatch('audio/toggleLoopState')
     const onTogglePlayState = () => $store.dispatch('audio/togglePlayState')
     const onToggleRandomState = () => $store.dispatch('audio/toggleRandomState')
@@ -56,6 +60,7 @@ export default defineComponent({
       isLoopEnabled,
       isPlaying,
       isRandomEnabled,
+      onLikeTrackClick,
       onToggleLoopState,
       onTogglePlayState,
       onToggleRandomState,

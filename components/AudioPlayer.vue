@@ -16,7 +16,10 @@
           />
         </div>
         <div class="audio-player__info--like">
-          <i class="el-icon-star-off audio-player__info--like-btn"></i>
+          <i
+            class="el-icon-star-off audio-player__info--like-btn"
+            @click="onLikeTrackClick"
+          ></i>
         </div>
       </div>
     </div>
@@ -70,18 +73,24 @@ export default defineComponent({
   name: 'AudioPlayer',
 
   props: {
-    artistLabel: { type: String, default: '' },
-    artworkUrl: { type: String, default: '' },
+    artistLabel: { type: String, default: null },
+    artworkUrl: { type: String, default: null },
     isLoopEnabled: Boolean,
     isPlaying: Boolean,
     isRandomEnabled: Boolean,
-    trackLabel: { type: String, default: '' },
+    trackId: { type: String, default: null },
+    trackLabel: { type: String, default: null },
   },
 
-  emits: ['toggle-loop-state', 'toggle-play-state', 'toggle-random-state'],
+  emits: [
+    'like-track',
+    'toggle-loop-state',
+    'toggle-play-state',
+    'toggle-random-state',
+  ],
 
   setup(props, { emit }) {
-    const { isLoopEnabled, isPlaying, isRandomEnabled } = toRefs(props)
+    const { isLoopEnabled, isPlaying, isRandomEnabled, trackId } = toRefs(props)
     const progress = ref(0)
     const playIcon = computed(() =>
       isPlaying && isPlaying.value
@@ -95,12 +104,15 @@ export default defineComponent({
       isRandomEnabled && isRandomEnabled.value ? 'warning' : 'info'
     )
 
+    const onLikeTrackClick = () => emit('like-track', trackId.value)
+
     const toggleLoopState = () => emit('toggle-loop-state')
     const togglePlayState = () => emit('toggle-play-state')
     const toggleRandomState = () => emit('toggle-random-state')
 
     return {
       loopButtonType,
+      onLikeTrackClick,
       playIcon,
       progress,
       randomButtonType,
@@ -166,6 +178,10 @@ export default defineComponent({
 
       &-btn {
         font-size: 24px;
+
+        &:hover {
+          cursor: pointer;
+        }
       }
     }
 
