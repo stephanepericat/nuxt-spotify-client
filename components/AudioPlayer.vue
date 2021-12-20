@@ -47,19 +47,27 @@
   </el-row>
 </template>
 <script>
-import { computed, defineComponent, ref } from '@nuxtjs/composition-api'
+import { computed, defineComponent, ref, toRefs } from '@nuxtjs/composition-api'
 
 export default defineComponent({
   name: 'AudioPlayer',
 
-  setup() {
-    const isPlaying = ref(false)
+  props: {
+    isPlaying: Boolean,
+  },
+
+  emits: ['toggle-play-state'],
+
+  setup(props, { emit }) {
+    const { isPlaying } = toRefs(props)
     const progress = ref(0)
     const playIcon = computed(() =>
-      isPlaying.value ? 'el-icon-video-pause' : 'el-icon-video-play'
+      isPlaying && isPlaying.value
+        ? 'el-icon-video-pause'
+        : 'el-icon-video-play'
     )
 
-    const togglePlayState = () => (isPlaying.value = !isPlaying.value)
+    const togglePlayState = () => emit('toggle-play-state')
 
     return { playIcon, progress, togglePlayState }
   },

@@ -13,7 +13,10 @@
         <nuxt-child />
       </el-main>
       <el-footer class="default-layout__footer" height="100px">
-        <AudioPlayer />
+        <AudioPlayer
+          :is-playing="isPlaying"
+          @toggle-play-state="onTogglePlayState"
+        />
       </el-footer>
     </el-container>
   </el-container>
@@ -28,13 +31,16 @@ export default defineComponent({
   setup() {
     const $store = useStore()
     const playlists = computed(() => $store.state.playlists.items)
+    const isPlaying = computed(() => $store.state.audio.isPlaying)
+
+    const onTogglePlayState = () => $store.dispatch('audio/togglePlayState')
 
     // cache playlists if not yet available..
     if (!playlists.value) {
       $store.dispatch('playlists/getUserPlaylists', { limit: 50, offset: 0 })
     }
 
-    return { playlists }
+    return { isPlaying, onTogglePlayState, playlists }
   },
 })
 </script>
