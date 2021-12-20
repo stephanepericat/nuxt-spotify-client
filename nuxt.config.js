@@ -18,6 +18,7 @@ export default {
   css: [
     'reset-css',
     '~/assets/style/app.scss',
+    'element-ui/lib/theme-chalk/icon.css',
     'element-theme-dark/lib/index.css',
   ],
 
