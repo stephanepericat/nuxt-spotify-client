@@ -60,10 +60,26 @@
         ></el-button>
       </div>
       <div class="audio-player__controls--progress">
-        <el-slider v-model="progress"></el-slider>
+        <el-slider v-model="progress" />
       </div>
     </div>
-    <div class="audio-player__devices">devices</div>
+    <div class="audio-player__devices">
+      <i
+        class="el-icon-s-unfold audio-player__devices--btn"
+        @click="onQueueClick"
+      />
+      <i
+        class="el-icon-s-operation audio-player__devices--btn"
+        @click="onDeviceClick"
+      />
+      <div class="audio-player__devices--volume">
+        <i
+          class="el-icon-headset audio-player__devices--btn"
+          @click="onVolumeClick"
+        />
+        <el-slider v-model="volume" />
+      </div>
+    </div>
   </el-row>
 </template>
 <script>
@@ -92,6 +108,7 @@ export default defineComponent({
   setup(props, { emit }) {
     const { isLoopEnabled, isPlaying, isRandomEnabled, trackId } = toRefs(props)
     const progress = ref(0)
+    const volume = ref(50)
     const playIcon = computed(() =>
       isPlaying && isPlaying.value
         ? 'el-icon-video-pause'
@@ -104,7 +121,10 @@ export default defineComponent({
       isRandomEnabled && isRandomEnabled.value ? 'warning' : 'info'
     )
 
+    const onDeviceClick = () => emit('device-click')
     const onLikeTrackClick = () => emit('like-track', trackId.value)
+    const onQueueClick = () => emit('queue-click')
+    const onVolumeClick = () => emit('volume-toggle')
 
     const toggleLoopState = () => emit('toggle-loop-state')
     const togglePlayState = () => emit('toggle-play-state')
@@ -112,13 +132,17 @@ export default defineComponent({
 
     return {
       loopButtonType,
+      onDeviceClick,
       onLikeTrackClick,
+      onQueueClick,
+      onVolumeClick,
       playIcon,
       progress,
       randomButtonType,
       toggleLoopState,
       togglePlayState,
       toggleRandomState,
+      volume,
     }
   },
 })
@@ -213,8 +237,33 @@ export default defineComponent({
 
   &__devices {
     flex-basis: 250px;
-    height: 25px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
     // background: #f70;
+
+    &--btn {
+      font-size: 22px;
+      margin-right: 16px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    &--volume {
+      flex-basis: 140px;
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      // background: red;
+
+      .el-slider {
+        width: calc(100% - 46px);
+      }
+    }
   }
 }
 </style>

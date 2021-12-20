@@ -13,7 +13,7 @@
         <nuxt-child />
       </el-main>
       <el-footer class="default-layout__footer" height="100px">
-        <AudioPlayer
+        <audio-player
           artist-label="Alluvial"
           artwork-url="https://www.grande-rock.com/sites/default/files/styles/large1/public/imagesnews/Alluvial-Sarcoma-cover2021.jpg?itok=H0gb03iT"
           :is-loop-enabled="isLoopEnabled"
@@ -31,7 +31,7 @@
   </el-container>
 </template>
 <script>
-// import consola from 'consola'
+import consola from 'consola'
 import { computed, defineComponent, useStore } from '@nuxtjs/composition-api'
 
 export default defineComponent({
@@ -45,7 +45,7 @@ export default defineComponent({
     const isPlaying = computed(() => $store.state.audio.isPlaying)
     const isRandomEnabled = computed(() => $store.state.audio.isRandomEnabled)
 
-    const onLikeTrackClick = (trackId) => console.log('like track', trackId)
+    const onLikeTrackClick = (trackId) => consola.info('like track', trackId)
 
     const onToggleLoopState = () => $store.dispatch('audio/toggleLoopState')
     const onTogglePlayState = () => $store.dispatch('audio/togglePlayState')
