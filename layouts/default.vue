@@ -14,8 +14,12 @@
       </el-main>
       <el-footer class="default-layout__footer" height="100px">
         <AudioPlayer
+          :is-loop-enabled="isLoopEnabled"
           :is-playing="isPlaying"
+          :is-random-enabled="isRandomEnabled"
+          @toggle-loop-state="onToggleLoopState"
           @toggle-play-state="onTogglePlayState"
+          @toggle-random-state="onToggleRandomState"
         />
       </el-footer>
     </el-container>
@@ -31,16 +35,29 @@ export default defineComponent({
   setup() {
     const $store = useStore()
     const playlists = computed(() => $store.state.playlists.items)
-    const isPlaying = computed(() => $store.state.audio.isPlaying)
 
+    const isLoopEnabled = computed(() => $store.state.audio.isLoopEnabled)
+    const isPlaying = computed(() => $store.state.audio.isPlaying)
+    const isRandomEnabled = computed(() => $store.state.audio.isRandomEnabled)
+
+    const onToggleLoopState = () => $store.dispatch('audio/toggleLoopState')
     const onTogglePlayState = () => $store.dispatch('audio/togglePlayState')
+    const onToggleRandomState = () => $store.dispatch('audio/toggleRandomState')
 
     // cache playlists if not yet available..
     if (!playlists.value) {
       $store.dispatch('playlists/getUserPlaylists', { limit: 50, offset: 0 })
     }
 
-    return { isPlaying, onTogglePlayState, playlists }
+    return {
+      isLoopEnabled,
+      isPlaying,
+      isRandomEnabled,
+      onToggleLoopState,
+      onTogglePlayState,
+      onToggleRandomState,
+      playlists,
+    }
   },
 })
 </script>

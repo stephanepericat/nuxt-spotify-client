@@ -10,8 +10,9 @@
         <el-button
           class="audio-player__button"
           icon="el-icon-sort"
-          type="info"
+          :type="randomButtonType"
           circle
+          @click="toggleRandomState"
         ></el-button>
         <el-button
           class="audio-player__button"
@@ -35,8 +36,9 @@
         <el-button
           class="audio-player__button"
           icon="el-icon-refresh"
-          type="info"
+          :type="loopButtonType"
           circle
+          @click="toggleLoopState"
         ></el-button>
       </div>
       <div class="audio-player__controls--progress">
@@ -53,23 +55,41 @@ export default defineComponent({
   name: 'AudioPlayer',
 
   props: {
+    isLoopEnabled: Boolean,
     isPlaying: Boolean,
+    isRandomEnabled: Boolean,
   },
 
-  emits: ['toggle-play-state'],
+  emits: ['toggle-loop-state', 'toggle-play-state', 'toggle-random-state'],
 
   setup(props, { emit }) {
-    const { isPlaying } = toRefs(props)
+    const { isLoopEnabled, isPlaying, isRandomEnabled } = toRefs(props)
     const progress = ref(0)
     const playIcon = computed(() =>
       isPlaying && isPlaying.value
         ? 'el-icon-video-pause'
         : 'el-icon-video-play'
     )
+    const loopButtonType = computed(() =>
+      isLoopEnabled && isLoopEnabled.value ? 'warning' : 'info'
+    )
+    const randomButtonType = computed(() =>
+      isRandomEnabled && isRandomEnabled.value ? 'warning' : 'info'
+    )
 
+    const toggleLoopState = () => emit('toggle-loop-state')
     const togglePlayState = () => emit('toggle-play-state')
+    const toggleRandomState = () => emit('toggle-random-state')
 
-    return { playIcon, progress, togglePlayState }
+    return {
+      loopButtonType,
+      playIcon,
+      progress,
+      randomButtonType,
+      toggleLoopState,
+      togglePlayState,
+      toggleRandomState,
+    }
   },
 })
 </script>
