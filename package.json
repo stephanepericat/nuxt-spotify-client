@@ -28,7 +28,7 @@
     "@nuxtjs/i18n": "^7.2.0",
     "@vueuse/core": "^7.4.0",
     "consola": "^2.15.3",
-    "core-js": "^3.19.3",
+    "core-js": "^3.22.3",
     "element-theme-dark": "^1.0.3",
     "element-ui": "^2.15.7",
     "express": "^4.17.2",
