@@ -2249,18 +2249,24 @@
     lodash "^4.17.15"
     pretty "^2.0.0"
 
-"@vueuse/core@^7.4.0":
-  version "7.4.0"
-  resolved "https://registry.yarnpkg.com/@vueuse/core/-/core-7.4.0.tgz#dca848b9b2209d94142f2ec0baad4ee00455262c"
-  integrity sha512-CgYouxjXOE63gMn3l9cOsgzPTEAk3yoncsSmJUxXAi/to25rCPVWB/39jXTPhWZboR43EDDMWoEhHaSoMzaldg==
+"@vueuse/core@^8.4.0":
+  version "8.4.0"
+  resolved "https://registry.yarnpkg.com/@vueuse/core/-/core-8.4.0.tgz#94b1b198274a05dba85e7bf3debfba63bed6492b"
+  integrity sha512-W0ZHkuYN0B21L/LAP4kzX5V4ABsqkYYVkb7Lkd4vMHMI+3RBlhPKAX3ySD0EOu6TSQEggmqnIFfs2TjMNmiOOQ==
   dependencies:
-    "@vueuse/shared" "7.4.0"
+    "@vueuse/metadata" "8.4.0"
+    "@vueuse/shared" "8.4.0"
     vue-demi "*"
 
-"@vueuse/shared@7.4.0":
-  version "7.4.0"
-  resolved "https://registry.yarnpkg.com/@vueuse/shared/-/shared-7.4.0.tgz#8f0767c4f7b89112c1b34accec44a6c8625ce085"
-  integrity sha512-x5Jn6jUB8gS1mGnVCoNWFEpAoDkm2QwtacZTUgKMn0Ow8tlUBKIfGVOt4vn9qZB10froED/ARHEj79WKLXRieA==
+"@vueuse/metadata@8.4.0":
+  version "8.4.0"
+  resolved "https://registry.yarnpkg.com/@vueuse/metadata/-/metadata-8.4.0.tgz#6cf2a3011bc1b47a1e0f57a2adff4f39d88b95c9"
+  integrity sha512-jFS3lFLohwlT/W3C1PTZSNSgFh/jckSG0G8aMWwMORQ8V5pwvmhdMwqCm8G35R6xLME71yJuq7G1742ljtRcOA==
+
+"@vueuse/shared@8.4.0":
+  version "8.4.0"
+  resolved "https://registry.yarnpkg.com/@vueuse/shared/-/shared-8.4.0.tgz#a8a99ad843321bf83620e0234b5f6145a2131583"
+  integrity sha512-8ECJyrr6e/PTkJOTP4ym2KDVfabWfcx+8K2sz00XofzjKBlUeYEiBTaXor/SzoInlQLkJtMpa6Z81NYNpxzIOw==
   dependencies:
     vue-demi "*"
 
