@@ -2017,6 +2017,11 @@
   dependencies:
     source-map "^0.6.1"
 
+"@types/web-bluetooth@^0.0.16":
+  version "0.0.16"
+  resolved "https://registry.yarnpkg.com/@types/web-bluetooth/-/web-bluetooth-0.0.16.tgz#1d12873a8e49567371f2a75fe3e7f7edca6662d8"
+  integrity sha512-oh8q2Zc32S6gd/j50GowEjKLoOVOwHP/bWVjKJInBwQqdOYMdPrf1oVlelTlyfFK3CKxL1uahMDAr+vy8T7yMQ==
+
 "@types/webpack-sources@*":
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/@types/webpack-sources/-/webpack-sources-3.2.0.tgz#16d759ba096c289034b26553d2df1bf45248d38b"
@@ -2249,18 +2254,25 @@
     lodash "^4.17.15"
     pretty "^2.0.0"
 
-"@vueuse/core@^7.4.0":
-  version "7.4.0"
-  resolved "https://registry.yarnpkg.com/@vueuse/core/-/core-7.4.0.tgz#dca848b9b2209d94142f2ec0baad4ee00455262c"
-  integrity sha512-CgYouxjXOE63gMn3l9cOsgzPTEAk3yoncsSmJUxXAi/to25rCPVWB/39jXTPhWZboR43EDDMWoEhHaSoMzaldg==
+"@vueuse/core@^9.4.0":
+  version "9.4.0"
+  resolved "https://registry.yarnpkg.com/@vueuse/core/-/core-9.4.0.tgz#afb30f9494b0954e51a489526566b14f1e2c5fb3"
+  integrity sha512-JzgenGj1ZF2BHOen5rsFiAyyI9sXAv7aKhNLlm9b7SwYQeKTcxTWdhudonURCSP3Egl9NQaRBzes2lv/1JUt/Q==
   dependencies:
-    "@vueuse/shared" "7.4.0"
+    "@types/web-bluetooth" "^0.0.16"
+    "@vueuse/metadata" "9.4.0"
+    "@vueuse/shared" "9.4.0"
     vue-demi "*"
 
-"@vueuse/shared@7.4.0":
-  version "7.4.0"
-  resolved "https://registry.yarnpkg.com/@vueuse/shared/-/shared-7.4.0.tgz#8f0767c4f7b89112c1b34accec44a6c8625ce085"
-  integrity sha512-x5Jn6jUB8gS1mGnVCoNWFEpAoDkm2QwtacZTUgKMn0Ow8tlUBKIfGVOt4vn9qZB10froED/ARHEj79WKLXRieA==
+"@vueuse/metadata@9.4.0":
+  version "9.4.0"
+  resolved "https://registry.yarnpkg.com/@vueuse/metadata/-/metadata-9.4.0.tgz#5c8eb105a8ad9eb7b47f78a226ff993560d0bd7f"
+  integrity sha512-7GKMdGAsJyQJl35MYOz/RDpP0FxuiZBRDSN79QIPbdqYx4Sd0sVTnIC68KJ6Oln0t0SouvSUMvRHuno216Ud2Q==
+
+"@vueuse/shared@9.4.0":
+  version "9.4.0"
+  resolved "https://registry.yarnpkg.com/@vueuse/shared/-/shared-9.4.0.tgz#634022fe42b3d5ece1d81d749724966f5071c8c3"
+  integrity sha512-fTuem51KwMCnqUKkI8B57qAIMcFovtGgsCtAeqxIzH3i6nE9VYge+gVfneNHAAy7lj8twbkNfqQSygOPJTm4tQ==
   dependencies:
     vue-demi "*"
 
